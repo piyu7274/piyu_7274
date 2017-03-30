@@ -50,6 +50,32 @@
                     toastr.error(err.data.message);
 
                 });
+
+          ParentServ.update($scope.parent,
+            function (response) {
+              console.log(response.data.message);
+            }, function (err) {
+              console.log(err.data.message)
+              toastr.error(err.data.message);
+
+            });
+
+
+          ParentServ.delete(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+
+          ParentServ.get(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
         }
     }
 

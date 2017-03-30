@@ -44,6 +44,32 @@
                     toastr.error(err.data.message);
 
                 });
+
+          LeaveServ.update($scope.leave,
+            function (response) {
+              console.log(response.data.message);
+            }, function (err) {
+              console.log(err.data.message)
+              toastr.error(err.data.message);
+
+            });
+
+
+          LeaveServ.delete(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+
+          LeaveServ.get(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
         }
     }
 

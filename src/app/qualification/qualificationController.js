@@ -12,7 +12,7 @@
     /** @ngInject */
     function qualificationController($scope, QualificationServ, toastr,$rootScope) {
         //start here
-        $rootScope.title = 'personel_info'
+        $rootScope.title = 'qualification'
         $scope.marks10 = '';
         $scope.marks12 = '';
         $scope.grade_per = '';
@@ -21,7 +21,7 @@
         $scope.gradType = '';
         $scope.pgradType='';
 
-        $scope.personel_info ={
+        $scope.qualification ={
             marks10: $scope.marks10,
             marks12 :$scope.marks12 ,
             grade_per_grade:$scope.grade_per,
@@ -34,7 +34,7 @@
 
         $scope.doSave = function () {
             // console.log('in')
-            $scope.personel_info ={
+            $scope.qualification ={
                 marks10: $scope.marks10,
                 marks12 :$scope.marks12 ,
                 grade_per_grade:$scope.grade_per,
@@ -44,8 +44,8 @@
                 pgrad_Type:$scope.pgradType
 
             }
-            console.log($scope.personel_info)
-            QualificationServ.add($scope.personel_info,
+            console.log($scope.qualification)
+            QualificationServ.add($scope.qualification,
                 function (response) {
                     console.log(response.data.message);
                 }, function (err) {
@@ -53,6 +53,33 @@
                     toastr.error(err.data.message);
 
                 });
+
+
+          QualificationServ.update($scope.qualification,
+            function (response) {
+              console.log(response.data.message);
+            }, function (err) {
+              console.log(err.data.message)
+              toastr.error(err.data.message);
+
+            });
+
+
+          QualificationServ.delete(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+
+          QualificationServ.get(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
         }
     }
 

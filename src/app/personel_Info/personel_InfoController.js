@@ -69,6 +69,25 @@
                     toastr.error(err.data.message);
 
                 });
+
+          PersonelInfoServ.update($scope.personel_info,
+            function (response) {
+              console.log(response.data.message);
+            }, function (err) {
+              console.log(err.data.message)
+              toastr.error(err.data.message);
+
+            });
+
+
+          PersonelInfoServ.delete(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+
           PersonelInfoServ.get(function (response) {
               console.log(response);
             }, function (err) {

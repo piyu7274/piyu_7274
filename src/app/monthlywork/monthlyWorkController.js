@@ -41,14 +41,39 @@
 
 
             console.log($scope.monthlyWork)
-           /* monthlyWorkServ.add($scope.monthlyWork,
+           monthlyWorkServ.add($scope.monthlyWork,
                 function (response) {
                     console.log(response.data.message);
                 }, function (err) {
                     console.log(err.data.message)
                     toastr.error(err.data.message);
 
-                });*/
+                });
+          monthlyWorkServ.update($scope.monthlyWork,
+            function (response) {
+              console.log(response.data.message);
+            }, function (err) {
+              console.log(err.data.message)
+              toastr.error(err.data.message);
+
+            });
+
+
+          monthlyWorkServ.delete(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+
+          monthlyWorkServ.get(function (response) {
+            console.log(response);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
         }
     }
 
