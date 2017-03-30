@@ -1,0 +1,25 @@
+<div><form name="monthlyWorkForm">
+				<div class="form-group">
+					<h3>Monthly Work Details</h3>
+					<label>Work Hour:</label>
+					<input type="textbox" name="work Hour" class="form-control" placeholder="work Hour" ng-model="workHour" required></br>
+						<label>Days Off:</label>
+					<input type="textbox" name="days_off" class="form-control" placeholder="days_off" ng-model="days_off" required></br>
+							<label>OverTime:</label>
+					<input type="textbox" name="overTime" class="form-control" placeholder="overTime" ng-model="overTime" required></br>
+								<label>Work From Date:</label>
+					<input type="textbox" name="work_from Date" class="form-control" placeholder="work_from Date" ng-model="work_fromDate" required></br>
+									<label>Work To Date:</label>
+					<input type="textbox" name="work_to Date" class="form-control" placeholder="work_to Date" ng-model="work_toDate" required></br>
+										<label>Working Month:</label>
+					<input type="textbox" name="month" class="form-control" placeholder="month" ng-model="month" required></br>
+				</div>
+	<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
+	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
+	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
+	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
+	<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
+  <button type="button" class="btn btn-primary" ui-sref="leave" >NEXT</button>
+			</form>
+			</div>
+

@@ -1,0 +1,22 @@
+<div>	<form name="leaveForm">
+				<div class="form-group">
+					<h3>Leave Details</h3>
+					<label>Holidays:</label>
+					<input type="textbox" name="holiday" class="form-control" placeholder="holiday" ng-model="holiday" required></br>
+						<label>	Leave Days:</label>
+					<input type="textbox" name="days" class="form-control" placeholder="days" ng-model="days" required></br>
+							<label>Leave Month:</label>
+					<input type="textbox" name="lmonth" class="form-control" placeholder="Leave Month" ng-model="lmonth" required></br>
+								<label>Leave Date:</label>
+					<input type="textbox" name="from Date" class="form-control" placeholder="from Date" ng-model="fromDate" required>
+					<input type="textbox" name="to Date" class="form-control" placeholder="to Date" ng-model="toDate" required></br>
+				</div>
+				<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
+	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
+	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
+	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
+				<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
+  <button type="button" class="btn btn-primary" ui-sref="workHistory" >NEXT</button>
+			</form>
+			</div>
+

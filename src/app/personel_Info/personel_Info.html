@@ -1,0 +1,36 @@
+<div><form name="personelInfoForm">
+				<div class="form-group">
+					<h3>Employee Personel Details</h3>
+					<label>Employee Details:</label>
+					<input type="textbox" name="FirstName" class="form-control" placeholder="FirstName" ng-model="FirstName" required>
+					<input type="textbox" name="LastName" class="form-control" placeholder="LastName" ng-model="LastName" required></br>
+						<label>Date of Birth:</label>
+					<input type="textbox" name="DateofBirth" class="form-control" placeholder="DateofBirth" ng-model="DateofBirth" required></br>
+							<label>Age:</label>
+					<input type="textbox" name="age" class="form-control" placeholder="age" ng-model="age" required></br>
+								<label>Gender:</label>
+					<input type="textbox" name="gender" class="form-control" placeholder="gender" ng-model="gender" required></br>
+									<label>Address Details:</label>
+					<input type="textbox" name="address" class="form-control" placeholder="address " ng-model="address" required>
+					<input type="textbox" name="city" class="form-control" placeholder="city" ng-model="city" required>
+					<input type="textbox" name="state" class="form-control" placeholder="state" ng-model="state" required>
+					<input type="textbox" name="postalCode" class="form-control" placeholder="postalCode" ng-model="postalCode" required></br>
+										<label>Contact Details:</label>
+					<input type="textbox" name="contact" class="form-control" placeholder="contactNo" ng-model="contact" required></br>
+											<label>Marrital Status:</label>
+					<input type="textbox" name="marritalStatus" class="form-control" placeholder="marritalStatus" ng-model="marritalStatus" required></br>
+												<label>Quaification Details:</label>
+					<input type="textbox" name="quaification" class="form-control" placeholder="quaification" ng-model="quaification" required></br>
+													<label>Current Experience:</label>
+					<input type="textbox" name="CurrentExp" class="form-control" placeholder="Current Experience" ng-model="CurrentExp" required></br>
+				</div>
+				<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
+	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
+	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
+	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
+				<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
+   <button type="button" class="btn btn-primary" ui-sref="parent" >NEXT</button>
+
+			</form>
+			</div>
+
