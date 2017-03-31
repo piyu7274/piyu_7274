@@ -9,17 +9,17 @@
   function LoginController($scope, LoginServ, toastr,$rootScope, $http, $state, AuthService) {
     //start here
     	$rootScope.title = 'login'
-	    $scope.userName = '';
+	    $scope.username = '';
 	    $scope.password = '';
 	    $scope.user ={
-	      username: $scope.userName,
+	      username: $scope.username,
 	      password : $scope.password
 	    }
 
 	    $scope.doLogin = function () {
 	      // console.log('in')
 	      $scope.user ={
-	      username: $scope.userName,
+	      username: $scope.username,
 	      password : $scope.password
 	    	}
 	      console.log($scope.user)
