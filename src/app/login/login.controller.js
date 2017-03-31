@@ -26,24 +26,21 @@
 	      LoginServ.login($scope.user,
 	          function (response) {
 	           console.log(response)
-                ga('create', 'UA-XXXXX-Y', 'auto', {
-                userId: $scope.user.username
-              });
 	            AuthService.setUser(response)
 	            AuthService.persist()
 	          $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
               console.log("1", response.token)
-              if(response.role == 'admin'){
-                $state.go("")
+              if(response){
+                $state.go("personel_info")
                 //toastr.success(response.message);
-              }else if(response.role == 'superadmin'){
-                $state.go("")
+              }else {
+                $state.go("login")
                 //toastr.success(response.message);
               }
 
 
 
-	          }, function (err) {
+     }, function (err) {
 	            console.log(err.data.message)
 	            toastr.error(err.data.message);
 

@@ -11,70 +11,71 @@
 
     /** @ngInject */
     function workHistoryController($scope, WorkHistoryServ, toastr,$rootScope) {
-        //start here
-        $rootScope.title = 'workHistory'
-        $scope.FirstName = '';
-        $scope.LastName = '';
-        $scope.cName = '';
-        $scope.address = '';
-        $scope.city='';
-        $scope.state='';
-        $scope.MobNo='';
-        $scope.off_contactNo='';
+      //start here
+      $rootScope.title = 'workHistory'
+      $scope.FirstName = '';
+      $scope.LastName = '';
+      $scope.cName = '';
+      $scope.address = '';
+      $scope.city = '';
+      $scope.state = '';
+      $scope.MobNo = '';
+      $scope.off_contactNo = '';
 
-        $scope.workHistory ={
-            name: this.FirstName+' '+  this.LastName,
-            companyName:this.cName,
-            address:this.address,
-            city:this.city,
-            state:this.state,
-            employee_mob:this.MobNo,
-            officeContact:this.marritoff_contactNoalStatus
+      $scope.workHistory = {
+        name: this.FirstName + ' ' + this.LastName,
+        companyName: this.cName,
+        address: this.address,
+        city: this.city,
+        state: this.state,
+        employee_mob: this.MobNo,
+        officeContact: this.marritoff_contactNoalStatus
+      }
+
+      $scope.doSave = function () {
+        // console.log('in')
+        $scope.workHistory = {
+          name: $scope.FirstName + ' ' + $scope.LastName,
+          companyName: $scope.cName,
+          address: $scope.address,
+          city: $scope.city,
+          state: $scope.state,
+          employee_mob: $scope.MobNo,
+          officeContact: $scope.marritoff_contactNoalStatus
         }
 
-        $scope.doSave = function () {
-            // console.log('in')
-            $scope.workHistory ={
-                name: $scope.FirstName+' '+  $scope.LastName,
-                companyName:$scope.cName,
-                address:$scope.address,
-                city:$scope.city,
-                state:$scope.state,
-                employee_mob:$scope.MobNo,
-                officeContact:$scope.marritoff_contactNoalStatus
-            }
 
-
-            console.log($scope.workHistory)
-            WorkHistoryServ.add($scope.workHistory,
-                function (response) {
-                    console.log(response.data.message);
-                }, function (err) {
-                    console.log(err.data.message)
-                    toastr.error(err.data.message);
-
-                });
-
-
-
-          WorkHistoryServ.update($scope.workHistory,
-            function (response) {
-              console.log(response.data.message);
-            }, function (err) {
-              console.log(err.data.message)
-              toastr.error(err.data.message);
-
-            });
-
-
-          WorkHistoryServ.delete(function (response) {
-            console.log(response);
+        console.log($scope.workHistory)
+        WorkHistoryServ.add($scope.workHistory,
+          function (response) {
+            console.log(response.data.message);
           }, function (err) {
             console.log(err.data.message)
             toastr.error(err.data.message);
 
           });
+      }
 
+      $scope.doUpdate = function () {
+        WorkHistoryServ.update($scope.workHistory,
+          function (response) {
+            console.log(response.data.message);
+          }, function (err) {
+            console.log(err.data.message)
+            toastr.error(err.data.message);
+
+          });
+      }
+      $scope.doDelete = function () {
+      WorkHistoryServ.delete(function (response) {
+        console.log(response);
+      }, function (err) {
+        console.log(err.data.message)
+        toastr.error(err.data.message);
+
+      });
+    }
+         $scope.doGet = function () {
           WorkHistoryServ.get(function (response) {
             console.log(response);
           }, function (err) {

@@ -41,32 +41,36 @@
                     toastr.error(err.data.message);
 
                 });
+          $scope.doUpdate = function () {
+            DepartmentServ.update($scope.department,
+              function (response) {
+                console.log(response.data.message);
+              }, function (err) {
+                console.log(err.data.message)
+                toastr.error(err.data.message);
 
-          DepartmentServ.update($scope.department,
-            function (response) {
-              console.log(response.data.message);
-            }, function (err) {
-              console.log(err.data.message)
-              toastr.error(err.data.message);
+              });
+          }
 
-            });
+            $scope.doDelete = function () {
+              DepartmentServ.delete(function (response) {
+                console.log(response);
+              }, function (err) {
+                console.log(err.data.message)
+                toastr.error(err.data.message);
 
+              });
+            }
 
-          DepartmentServ.delete(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
+              $scope.doGet = function () {
+                DepartmentServ.get(function (response) {
+                  console.log(response);
+                }, function (err) {
+                  console.log(err.data.message)
+                  toastr.error(err.data.message);
 
-          });
-
-          DepartmentServ.get(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
-
-          });
+                });
+              }
         }
     }
 

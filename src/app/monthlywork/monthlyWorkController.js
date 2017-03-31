@@ -29,27 +29,17 @@
         }
 
         $scope.doSave = function () {
-            // console.log('in')
-            $scope.monthlyWork ={
-                workHour: $scope.workHour ,
-                daysOff : $scope.days_off,
-                overTime : $scope.overTime,
-                fromDate : $scope.fromDate,
-                toDate : $scope.toDate,
-                workMonth : $scope.workMonth
-            }
-
-
-            console.log($scope.monthlyWork)
-           monthlyWorkServ.add($scope.monthlyWork,
-                function (response) {
-                    console.log(response.data.message);
-                }, function (err) {
-                    console.log(err.data.message)
-                    toastr.error(err.data.message);
-
-                });
-          monthlyWorkServ.update($scope.monthlyWork,
+          // console.log('in')
+          $scope.monthlyWork = {
+            workHour: $scope.workHour,
+            daysOff: $scope.days_off,
+            overTime: $scope.overTime,
+            fromDate: $scope.fromDate,
+            toDate: $scope.toDate,
+            workMonth: $scope.workMonth
+          }
+          console.log($scope.monthlyWork)
+          monthlyWorkServ.add($scope.monthlyWork,
             function (response) {
               console.log(response.data.message);
             }, function (err) {
@@ -57,16 +47,28 @@
               toastr.error(err.data.message);
 
             });
-
-
-          monthlyWorkServ.delete(function (response) {
-            console.log(response);
+        }
+      $scope.doUpdate= function () {
+        monthlyWorkServ.update($scope.monthlyWork,
+          function (response) {
+            console.log(response.data.message);
           }, function (err) {
             console.log(err.data.message)
             toastr.error(err.data.message);
 
           });
 
+      }
+      $scope.doDelete = function () {
+        monthlyWorkServ.delete(function (response) {
+          console.log(response);
+        }, function (err) {
+          console.log(err.data.message)
+          toastr.error(err.data.message);
+
+        });
+      }
+      $scope.doGet = function () {
           monthlyWorkServ.get(function (response) {
             console.log(response);
           }, function (err) {

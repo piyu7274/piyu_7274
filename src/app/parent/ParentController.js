@@ -31,27 +31,18 @@
         }
 
         $scope.doSave = function () {
-            // console.log('in')
-            $scope.parent ={
-                fatherName: $scope.fFirstName+' '+  $scope.fLastName,
-                motherName :$scope.mFirstName+' '+$scope.mLastName ,
-                parentAddress : $scope.address,
-                city : $scope.city,
-                state : $scope.state,
-                parentContact : $scope.contact
-            }
+          // console.log('in')
+          $scope.parent = {
+            fatherName: $scope.fFirstName + ' ' + $scope.fLastName,
+            motherName: $scope.mFirstName + ' ' + $scope.mLastName,
+            parentAddress: $scope.address,
+            city: $scope.city,
+            state: $scope.state,
+            parentContact: $scope.contact
+          }
 
-            console.log($scope.parent)
-            ParentServ.add($scope.parent,
-                function (response) {
-                    console.log(response.data.message);
-                }, function (err) {
-                    console.log(err.data.message)
-                    toastr.error(err.data.message);
-
-                });
-
-          ParentServ.update($scope.parent,
+          console.log($scope.parent)
+          ParentServ.add($scope.parent,
             function (response) {
               console.log(response.data.message);
             }, function (err) {
@@ -59,23 +50,36 @@
               toastr.error(err.data.message);
 
             });
+        }
+      $scope.doUpdate = function () {
 
-
-          ParentServ.delete(function (response) {
-            console.log(response);
+        ParentServ.update($scope.parent,
+          function (response) {
+            console.log(response.data.message);
           }, function (err) {
             console.log(err.data.message)
             toastr.error(err.data.message);
 
           });
+      }
+      $scope.doDelete = function () {
+        ParentServ.delete(function (response) {
+          console.log(response);
+        }, function (err) {
+          console.log(err.data.message)
+          toastr.error(err.data.message);
 
-          ParentServ.get(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
+        });
+      }
+      $scope.doGet = function () {
+        ParentServ.get(function (response) {
+          console.log(response);
+        }, function (err) {
+          console.log(err.data.message)
+          toastr.error(err.data.message);
 
-          });
+        });
+
         }
     }
 
