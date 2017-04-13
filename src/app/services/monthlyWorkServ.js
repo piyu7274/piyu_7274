@@ -29,7 +29,7 @@ angular.module('emsdashboard').service('monthlyWorkServ', ['$http', '$q', 'APP_C
 
             get: {
                 method: 'GET',
-                url: loginURL + 'monthlyWork'
+                url: loginURL + 'monthlyWork/monthlyWorkId/:eId'
             }
 
         }

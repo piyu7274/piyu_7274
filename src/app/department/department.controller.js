@@ -9,38 +9,21 @@
         .controller('DepartmentController', DepartmentController);
 
     /** @ngInject */
-    function DepartmentController($scope, DepartmentServ, toastr,$rootScope) {
+    function DepartmentController($scope, $window,DepartmentServ, monthlyWorkServ,AuthService,toastr,$state,$rootScope) {
         //start here
-        $rootScope.title = 'department'
-        $scope.FirstName = '';
-        $scope.LastName = '';
-        $scope.monthlysalary = '';
-        $scope.department = '';
-        $scope.designation = '';
-        $scope.department ={
-           // Name: $scope.FirstName+' '+ $scope.LastName ,
-            monthlySalary : $scope.monthlysalary,
-             department : $scope.department,
-             designation : $scope.designation
-        }
-
+        $rootScope.title = 'department';
+        $scope.data={};
+         $scope.data.eId=$rootScope.eId;
         $scope.doSave = function () {
-            // console.log('in')
-            $scope.department ={
-                //Name: $scope.FirstName+' '+ $scope.LastName ,
-                monthlySalary : $scope.monthlysalary,
-                department : $scope.department,
-                designation : $scope.designation
-            }
-            console.log($scope.department)
-            DepartmentServ.add($scope.department,
-                function (response) {
-                  console.log(response.data.message);
-                }, function (err) {
-                    console.log(err.data.message)
-                    toastr.error(err.data.message);
+          DepartmentServ.add($scope.data,
+            function (response) {
+              toastr.success(response.message);
+            }, function (err) {
+              console.log(err.data.message);
+              toastr.error(err.data.message);
 
-                });
+            });
+        }
           $scope.doUpdate = function () {
             DepartmentServ.update($scope.department,
               function (response) {
@@ -62,16 +45,38 @@
               });
             }
 
-              $scope.doGet = function () {
-                DepartmentServ.get(function (response) {
-                  console.log(response);
-                }, function (err) {
-                  console.log(err.data.message)
-                  toastr.error(err.data.message);
+              $scope.doNext = function () {
+               /* var eId=$scope.data.eId;
+                console.log(eId);
+        monthlyWorkServ.get({eId:eId}, function (response) {
+          console.log(response);
+          AuthService.setUser(response)*/
+           $state.go("monthlyWork")
+        }/*, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+      });
+        }*/
 
-                });
-              }
-        }
-    }
+
+         $scope.doGet = function () {
+         var eId=$rootScope.eId;
+          console.log(eId);
+        DepartmentServ.get({eId:eId}, function (response) {
+           if(response.data==null)
+          {
+            $scope.data='';
+            toastr.success(response.message);
+          }
+          console.log(response);
+          $scope.data=response;
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+          });
+      }
+        $scope.doGet();
+      }
+
 
 })();

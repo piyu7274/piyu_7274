@@ -30,7 +30,7 @@ angular.module('emsdashboard').service('DepartmentServ', ['$http', '$q', 'APP_CO
 
             get: {
                 method: 'GET',
-                url: loginURL + 'department'
+                url: loginURL + 'department/departmentId/:eId'
             }
 
 

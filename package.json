@@ -1,7 +1,10 @@
 {
   "name": "emsdashboard",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-loading-bar": "^0.9.0",
+    "ng-table": "^3.0.1"
+  },
   "scripts": {
     "test": "gulp test"
   },

@@ -8,7 +8,7 @@
   /** @ngInject */
   function LoginController($scope, LoginServ, toastr,$rootScope, $http, $state, AuthService) {
     //start here
-    	$rootScope.title = 'login'
+    	$rootScope.title = 'login';
 	    $scope.username = '';
 	    $scope.password = '';
 	    $scope.user ={
@@ -25,31 +25,32 @@
 	      console.log($scope.user)
 	      LoginServ.login($scope.user,
 	          function (response) {
-	           console.log(response)
-	            AuthService.setUser(response)
-	            AuthService.persist()
+	           console.log(response);
+	            /*ga('create', 'UA-XXXXX-Y', 'auto', {
+                userId: $scope.user.username
+              });*/
+	            AuthService.setUser(response);
+	            AuthService.persist();
 	          $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
-              console.log("1", response.token)
+              console.log("1", response.token);
               if(response){
-                $state.go("personel_info")
-                //toastr.success(response.message);
+                $state.go("employee")
+                toastr.success(response.message);
               }else {
-                $state.go("login")
-                //toastr.success(response.message);
+
+                toastr.success("Invalid Input Please SignUp");
+                $state.go("registration")
               }
 
 
 
      }, function (err) {
-	            console.log(err.data.message)
+	            console.log(err.data.message);
 	            toastr.error(err.data.message);
 
 	          });
 	    }
 
-	      $scope.doLoginnew = function () {
-	      	$state.go("personel_info");
-	      }
     }
 
 })();

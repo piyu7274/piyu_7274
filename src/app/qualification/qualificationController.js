@@ -10,57 +10,29 @@
         .controller('qualificationController', qualificationController);
 
     /** @ngInject */
-    function qualificationController($scope, QualificationServ, toastr,$rootScope) {
+    function qualificationController($scope,$window, QualificationServ, DepartmentServ,AuthService,toastr,$state,$rootScope) {
         //start here
-        $rootScope.title = 'qualification'
-        $scope.marks10 = '';
-        $scope.marks12 = '';
-        $scope.grade_per = '';
-        $scope.college = '';
-        $scope.university = '';
-        $scope.gradType = '';
-        $scope.pgradType='';
-
-        $scope.qualification ={
-            marks10: $scope.marks10,
-            marks12 :$scope.marks12 ,
-            grade_per_grade:$scope.grade_per,
-            college:$scope.college,
-            university:$scope.university,
-            grad_Type:$scope.gradType,
-            pgrad_Type:$scope.pgradType
-
-        }
-
+        $rootScope.title = 'qualification';
+        $scope.data={};
+        
         $scope.doSave = function () {
-          // console.log('in')
-          $scope.qualification = {
-            marks10: $scope.marks10,
-            marks12: $scope.marks12,
-            grade_per_grade: $scope.grade_per,
-            college: $scope.college,
-            university: $scope.university,
-            grad_Type: $scope.gradType,
-            pgrad_Type: $scope.pgradType
-
-          }
-          console.log($scope.qualification)
-          QualificationServ.add($scope.qualification,
+          QualificationServ.add( $scope.data,
             function (response) {
-              console.log(response.data.message);
+              toastr.success(response.message);
             }, function (err) {
-              console.log(err.data.message)
+              console.log(err.data.message);
               toastr.error(err.data.message);
 
             });
 
         }
+
       $scope.doUpdate = function () {
-        QualificationServ.update($scope.qualification,
+        QualificationServ.update($scope.data,
           function (response) {
             console.log(response.data.message);
           }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
           });
@@ -70,20 +42,44 @@
           QualificationServ.delete(function (response) {
             console.log(response);
           }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
           });
         }
-          $scope.doGet = function () {
-          QualificationServ.get(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
+          $scope.doNext = function () {
+           /* $scope.qualification=AuthService.getUser();
+        var eId=$scope.qualification.eId;
+        console.log(eId);
+        DepartmentServ.get({eId:eId}, function (response) {
+          console.log(response);
+          AuthService.setUser(response);*/
+          $state.go("department");
+        }/*, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+        });
+        }*/
 
-          });
+        $scope.doGet = function () {
+         var eId=$rootScope.eId;
+          console.log(eId);
+        QualificationServ.get({eId:eId}, function (response) {
+           if(response.data==null)
+          {
+            $scope.data='';
+            toastr.success(response.message);
+          }
+          console.log(response);
+          $scope.data=response;
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+
+        });
         }
-    }
+         $scope.doGet();
+          }
+    
 
 })();

@@ -10,7 +10,7 @@ angular.module('emsdashboard').service('PersonelInfoServ', ['$http', '$q', 'APP_
 
     return $resource(
         "",
-        {},
+        {eId:'@eId'},
         {
             add: {
                 method: 'POST',
@@ -22,16 +22,15 @@ angular.module('emsdashboard').service('PersonelInfoServ', ['$http', '$q', 'APP_
                 url: loginURL + 'employee'
             },
 
+            get: {
+                method: 'GET',
+                url: loginURL + 'employee/empId/:eId'
+            },
+
             delete: {
                 method: 'DELETE',
                 url: loginURL + 'employee'
-            },
-
-            get: {
-                method: 'GET',
-                url: loginURL + 'employee/1'
             }
-
         }
     );
 }]);

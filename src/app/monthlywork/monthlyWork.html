@@ -1,25 +1,57 @@
-<div><form name="monthlyWorkForm">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#employee">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Links</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#employee">Home</a></li>
+        <li><a href="#personel_info">Employee</a></li>
+        <li><a href="#qualification">Qualification</a></li>
+        <li><a href="#department">Department</a></li>
+        <li><a href="#monthlyWork">MonthlyWork</a></li>
+        <li><a href="#leave">Leave</a></li>
+        <li><a href="#workHistory">WorkHistory</a></li>
+      </ul><br>
+    </div>
+
+
+  <div class="col-sm-6">
+  <form name="monthlyWorkForm">
 				<div class="form-group">
-					<h3>Monthly Work Details</h3>
+					<h3><i><b>Monthly Work Details</b></i></h3>
 					<label>Work Hour:</label>
-					<input type="textbox" name="work Hour" class="form-control" placeholder="work Hour" ng-model="workHour" required></br>
+					<input type="textbox" name="work Hour" class="form-control" placeholder="work Hour" ng-model="data.workHour" required></br>
 						<label>Days Off:</label>
-					<input type="textbox" name="days_off" class="form-control" placeholder="days_off" ng-model="days_off" required></br>
+					<input type="textbox" name="days_off" class="form-control" placeholder="days_off" ng-model="data.daysOff" required></br>
 							<label>OverTime:</label>
-					<input type="textbox" name="overTime" class="form-control" placeholder="overTime" ng-model="overTime" required></br>
+					<input type="textbox" name="overTime" class="form-control" placeholder="overTime" ng-model="data.overTime" required></br>
 								<label>Work From Date:</label>
-					<input type="textbox" name="work_from Date" class="form-control" placeholder="work_from Date" ng-model="work_fromDate" required></br>
+					<input type="datetime" name="work_from Date" class="form-control" placeholder="work_from Date" ng-model="data.fromDate" required></br>
 									<label>Work To Date:</label>
-					<input type="textbox" name="work_to Date" class="form-control" placeholder="work_to Date" ng-model="work_toDate" required></br>
+					<input type="datetime" name="work_to Date" class="form-control" placeholder="work_to Date" ng-model="data.toDate" required></br>
 										<label>Working Month:</label>
-					<input type="textbox" name="month" class="form-control" placeholder="month" ng-model="month" required></br></br>
+					<input type="textbox" name="month" class="form-control" placeholder="month" ng-model="data.workMonth" required></br></br>
 				</div>
 	<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
 	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
-	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
-	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
-	<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
-  <button type="button" class="btn btn-primary" ui-sref="leave" >NEXT</button>
+  <button type="button" class="btn btn-primary" ng-click="doNext()" >NEXT</button>
 			</form>
 			</div>
-
+  </div>
+</div>
+<div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer></div>

@@ -2,8 +2,8 @@
 
 
 angular.module('emsdashboard').service('LoginServ', ['$http', '$q', 'APP_CONSTANT', '$resource', function ( $http, $q, APP_CONSTANT, $resource) {
-  var loginURL = APP_CONSTANT.loginURL;
-  var url = APP_CONSTANT.URL;
+  //var loginURL = APP_CONSTANT.loginURL;
+  var URL = APP_CONSTANT.URL;
 
   return $resource(
     "",
@@ -11,11 +11,11 @@ angular.module('emsdashboard').service('LoginServ', ['$http', '$q', 'APP_CONSTAN
     {
       login: {
         method: 'POST',
-        url: loginURL + 'login'
+        url: URL + 'login'
       },
       logout: {
         method: 'POST',
-        url: url + 'logout'
+        url: URL + 'logout'
       }
 
     }

@@ -10,58 +10,28 @@
         .controller('workHistoryController', workHistoryController);
 
     /** @ngInject */
-    function workHistoryController($scope, WorkHistoryServ, toastr,$rootScope) {
+    function workHistoryController($scope,$window, WorkHistoryServ, AuthService,toastr,$rootScope) {
       //start here
-      $rootScope.title = 'workHistory'
-      $scope.FirstName = '';
-      $scope.LastName = '';
-      $scope.cName = '';
-      $scope.address = '';
-      $scope.city = '';
-      $scope.state = '';
-      $scope.MobNo = '';
-      $scope.off_contactNo = '';
-
-      $scope.workHistory = {
-        name: this.FirstName + ' ' + this.LastName,
-        companyName: this.cName,
-        address: this.address,
-        city: this.city,
-        state: this.state,
-        employee_mob: this.MobNo,
-        officeContact: this.marritoff_contactNoalStatus
-      }
+      $rootScope.title = 'workHistory';
+     $scope.data={};
 
       $scope.doSave = function () {
-        // console.log('in')
-        $scope.workHistory = {
-          name: $scope.FirstName + ' ' + $scope.LastName,
-          companyName: $scope.cName,
-          address: $scope.address,
-          city: $scope.city,
-          state: $scope.state,
-          employee_mob: $scope.MobNo,
-          officeContact: $scope.marritoff_contactNoalStatus
-        }
-
-
-        console.log($scope.workHistory)
-        WorkHistoryServ.add($scope.workHistory,
+        WorkHistoryServ.add($scope.data,
           function (response) {
-            console.log(response.data.message);
+            toastr.success(response.message);
           }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
           });
       }
 
       $scope.doUpdate = function () {
-        WorkHistoryServ.update($scope.workHistory,
+        WorkHistoryServ.update($scope.data,
           function (response) {
             console.log(response.data.message);
           }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
           });
@@ -70,20 +40,30 @@
       WorkHistoryServ.delete(function (response) {
         console.log(response);
       }, function (err) {
-        console.log(err.data.message)
+        console.log(err.data.message);
         toastr.error(err.data.message);
 
       });
     }
          $scope.doGet = function () {
-          WorkHistoryServ.get(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
+         var eId=$rootScope.eId;
+          console.log(eId);
+        WorkHistoryServ.get({eId:eId}, function (response) {
+           if(response.data==null)
+          {
+            $scope.data='';
+            toastr.success(response.message);
+          }
+          console.log(response);
+          $scope.data=response;
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
 
-          });
+        });
         }
-    }
+         $scope.doGet();
+          }
+    
 
 })();

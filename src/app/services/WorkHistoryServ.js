@@ -26,7 +26,7 @@ angular.module('emsdashboard').service('WorkHistoryServ', ['$http', '$q', 'APP_C
             },
             get: {
                 method: 'GET',
-                url: loginURL + 'workHistory'
+                url: loginURL + 'workHistory/workHistoryId/:eId'
             }
 
         }

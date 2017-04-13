@@ -1,27 +1,52 @@
-<div><form name="WorkingHistoryForm" xmlns="http://www.w3.org/1999/html">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#employee">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Links</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#employee">Home</a></li>
+        <li><a href="#personel_info">Employee</a></li>
+        <li><a href="#qualification">Qualification</a></li>
+        <li><a href="#department">Department</a></li>
+        <li><a href="#monthlyWork">MonthlyWork</a></li>
+        <li><a href="#leave">Leave</a></li>
+        <li><a href="#workHistory">WorkHistory</a></li>
+      </ul><br>
+    </div>
+  <div class="col-sm-6 ">
+    <form name="WorkingHistoryForm" >
 				<div class="form-group">
-					<h3>Previous Working Details</h3>
-					<label>Employee Details:</label>
-					<input type="textbox" name="FirstName" class="form-control" placeholder="FirstName" ng-model="FirstName" required>
-					<input type="textbox" name="LastName" class="form-control" placeholder="LastName" ng-model="LastName" required></br>
-						<label>Gender:</label>
-					<input type="textbox" name="gender" class="form-control" placeholder="gender" ng-model="gender" required></br>
+					<h3><i><b>Previous Working Details</b></i></h3>
 							<label>Company Details:</label>
-					<input type="textbox" name="cName" class="form-control" placeholder="cName" ng-model="cName" required></br>
+					<input type="textbox" name="cName" class="form-control" placeholder="cName" ng-model="data.companyName" required></br>
 								<label>Address Details:</label>
-					<input type="textbox" name="address" class="form-control" placeholder="address " ng-model="address" required>
-					<input type="textbox" name="city" class="form-control" placeholder="city" ng-model="city" required>
-					<input type="textbox" name="state" class="form-control" placeholder="state" ng-model="state" required></br>
+					<input type="textbox" name="address" class="form-control" placeholder="address " ng-model="data.address" required>
+					<input type="textbox" name="city" class="form-control" placeholder="city" ng-model="data.city" required>
+					<input type="textbox" name="state" class="form-control" placeholder="state" ng-model="data.state" required></br>
 									<label>Contact Details:</label>
-					<input type="textbox" name="MobNo" class="form-control" placeholder="mobile No" ng-model="MobNo" required>
-					<input type="textbox" name="off_contactNo" class="form-control" placeholder="office No" ng-model="off_contactNo" required></br></br>
+					<input type="textbox" name="MobNo" class="form-control" placeholder="mobile No" ng-model="data.employee_mob" required>
+					<input type="textbox" name="off_contactNo" class="form-control" placeholder="office No" ng-model="data.officeContact" required></br></br>
 
 				</div>
 				<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
 	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
-	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
-	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
-				<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
+	
 			</form>
 			</div>
-
+</div></div></div>
+<div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer></div>

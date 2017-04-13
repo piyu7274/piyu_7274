@@ -29,7 +29,7 @@ angular.module('emsdashboard').service('QualificationServ', ['$http', '$q', 'APP
 
             get: {
                 method: 'GET',
-                url: loginURL + 'qualification'
+                url: loginURL + 'qualification/qualificationId/:eId'
             }
 
         }

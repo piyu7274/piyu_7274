@@ -10,7 +10,7 @@
     $stateProvider
 
       .state('login', {
-        url: '/',
+        url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginController'
       })
@@ -20,13 +20,7 @@
         templateUrl: 'app/department/department.html',
         controller: 'DepartmentController'
       })
-
-      .state('parent', {
-        url: '/parent',
-        templateUrl: 'app/parent/parent.html',
-        controller: 'ParentController'
-      })
-
+      
       .state('leave', {
         url: '/leave',
         templateUrl: 'app/leave/leave.html',
@@ -57,7 +51,22 @@
         controller: 'workHistoryController'
       })
 
-    $urlRouterProvider.otherwise('/');
+      .state('registration', {
+        url: '/registration',
+        templateUrl: 'app/registration/registration.html',
+        controller: 'registrationController'
+      })
+      .state('employee', {
+        url: '/employee',
+        templateUrl: 'app/personel_Info/employeeList.html',
+        controller: 'employeeController'
+      })
+
+      .state('home', {
+        url: '/home',
+        templateUrl: 'app/home/home.html'
+      })
+    $urlRouterProvider.otherwise('/home');
   }
 
 })();

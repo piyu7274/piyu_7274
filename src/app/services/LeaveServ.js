@@ -29,7 +29,7 @@ angular.module('emsdashboard').service('LeaveServ', ['$http', '$q', 'APP_CONSTAN
 
             get: {
                 method: 'GET',
-                url: loginURL + 'leave'
+                url: loginURL + 'leave/leaveId/:eId'
             }
 
         }

@@ -10,62 +10,22 @@
         .controller('personel_InfoController', personel_InfoController);
 
     /** @ngInject */
-    function personel_InfoController($scope, PersonelInfoServ, toastr,$rootScope) {
+    function personel_InfoController($scope, PersonelInfoServ,$stateParams, toastr,$rootScope,LoginServ,$http,$state,AuthService) {
         //start here
-        $rootScope.title = 'personel_info'
-        $scope.FirstName = '';
-        $scope.LastName = '';
-        $scope.DateofBirth = '';
-        $scope.age = '';
-        $scope.gender = '';
-        $scope.address = '';
-        $scope.Email='';
-        $scope.city='';
-        $scope.state='';
-        $scope.postalCode='';
-        $scope.contact='';
-        $scope.marritalStatus='';
-        $scope.quaification='';
-        $scope.CurrentExp='';
-        $scope.personel_info ={
-            name: $scope.fFirstName+' '+  $scope.fLastName,
-            DOB :$scope.DateofBirth ,
-            age:$scope.age,
-            gender:$scope.gender,
-            address:$scope.address,
-            city:$scope.city,
-            Email:$scope.Email,
-            state:$scope.state,
-            postalCode:$scope.postalCode,
-            marritalStatus:$scope.marritalStatus,
-            contactNo : $scope.contact,
-            quaification:$scope.quaification,
-            CurrentExp: $scope.CurrentExp
-        }
+          var eId=$rootScope.eId;
+          console.log(eId);
+        $rootScope.title = 'personel_info';
+       $scope.data={};
+       
 
         $scope.doSave = function () {
-          // console.log('in')
-          $scope.personel_info = {
-            name: $scope.fFirstName + ' ' + $scope.fLastName,
-            DOB: $scope.DateofBirth,
-            age: $scope.age,
-            gender: $scope.gender,
-            address: $scope.address,
-            city: $scope.city,
-            Email: $scope.Email,
-            state: $scope.state,
-            postalCode: $scope.postalCode,
-            marritalStatus: $scope.marritalStatus,
-            contactNo: $scope.contact,
-            quaification: $scope.quaification,
-            CurrentExp: $scope.CurrentExp
-          }
-          //  console.log($scope.personel_info)
-          PersonelInfoServ.add($scope.personel_info,
+          
+          PersonelInfoServ.add($scope.data,
             function (response) {
-              console.log(response.data.message);
+              $rootScope.eId=response.eId;
+              toastr.success(response.message);
             }, function (err) {
-              console.log(err.data.message)
+              console.log(err.data.message);
               toastr.error(err.data.message);
 
             });
@@ -75,30 +35,55 @@
           function (response) {
             console.log(response.data.message);
           }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
           });
       }
 
-      $scope.doDelete = function () {
-        PersonelInfoServ.delete(function (response) {
+      
+      $scope.doNext = function () {
+       /* var eId=$scope.data.eId;
+        console.log(eId);
+        QualificationServ.get({eId:eId}, function (response) {
           console.log(response);
-        }, function (err) {
-          console.log(err.data.message)
+          $scope.data=response;
+          AuthService.setUser(response);
+          console.log("=====================================");
+          console.log($scope.data);
+          console.log("=====================================");*/
+           $state.go("qualification");
+        }/*, function (err) {
+          console.log(err.data.message);
           toastr.error(err.data.message);
 
         });
-      }
-      $scope.doGet = function () {
-          PersonelInfoServ.get(function (response) {
-              console.log(response);
-            }, function (err) {
-              console.log(err.data.message)
-              toastr.error(err.data.message);
-
-            });
         }
+*/
+
+         $scope.doGet = function () {
+         var eId=$rootScope.eId;
+          console.log(eId);
+        PersonelInfoServ.get({eId:eId}, function (response) {
+          if(response.data==null)
+          {
+            $scope.data='';
+          }
+          console.log(response);
+          $scope.data=response;
+
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+
+        });
+        
+
+        }
+        
+         $scope.doGet();
+
+      
     }
 
 })();

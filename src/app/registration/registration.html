@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+	<div class="container-fluid">
+  <div class="col-xs-6"><form name="RegistrationForm">
+  <div class="form-group">
+    <h3><i><b>Registration Form</b></i></h3>
+    <div class="row">
+    <div class="col-xs-6 ">
+    <label> FirstName:</label>
+
+    <input type="textbox" name="FirstName" class="form-control" placeholder="FirstName" ng-model="FirstName" required>
+    <label> LastName:</label>
+    <input type="textbox" name="LastName" class="form-control" placeholder="LastName" ng-model="LastName" required></br>
+    <label> UserName:</label>
+      <input type="text" name="username" class="form-control" placeholder="Email" ng-model="username" required></br>
+    <label> Password:</label>
+      <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password" required></br>
+
+<button type="submit" class="btn btn-primary" ng-click="doSave()" ng-disabled="RegistrationForm.$invalid">Register</button>
+  </div></div></div>
+</form>
+</div>
+  </div>
+
+
+  <div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer>
+  </div>

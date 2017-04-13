@@ -10,52 +10,28 @@
         .controller('monthlyWorkController', monthlyWorkController);
 
     /** @ngInject */
-    function monthlyWorkController($scope, monthlyWorkServ, toastr,$rootScope) {
+    function monthlyWorkController($scope,$window, monthlyWorkServ, LeaveServ,AuthService,toastr,$state,$rootScope) {
         //start here
-        $rootScope.title = 'monthlyWork'
-        $scope.workHour = '';
-        $scope.daysOff = '';
-        $scope.overTime = '';
-        $scope.fromDate = '';
-        $scope.toDate = '';
-        $scope.workMonth='';
-        $scope.monthlyWork ={
-            workHour: $scope.workHour ,
-            daysOff : $scope.days_off,
-            overTime : $scope.overTime,
-            fromDate : $scope.fromDate,
-            toDate : $scope.toDate,
-            workMonth : $scope.workMonth
-        }
-
+        $rootScope.title = 'monthlyWork';
+        $scope.data={};
         $scope.doSave = function () {
-          // console.log('in')
-          $scope.monthlyWork = {
-            workHour: $scope.workHour,
-            daysOff: $scope.days_off,
-            overTime: $scope.overTime,
-            fromDate: $scope.fromDate,
-            toDate: $scope.toDate,
-            workMonth: $scope.workMonth
-          }
-          console.log($scope.monthlyWork)
-          monthlyWorkServ.add($scope.monthlyWork,
+          monthlyWorkServ.add($scope.data,
             function (response) {
-              console.log(response.data.message);
+              toastr.success(response.message);
             }, function (err) {
-              console.log(err.data.message)
+              console.log(err.data.message);
               toastr.error(err.data.message);
 
             });
         }
       $scope.doUpdate= function () {
-        monthlyWorkServ.update($scope.monthlyWork,
+        monthlyWorkServ.update($scope.data,
           function (response) {
-            console.log(response.data.message);
-          }, function (err) {
-            console.log(err.data.message)
+            console.log(err.data.message);
             toastr.error(err.data.message);
 
+            console.log(response.data.message);
+          }, function (err) {
           });
 
       }
@@ -63,20 +39,46 @@
         monthlyWorkServ.delete(function (response) {
           console.log(response);
         }, function (err) {
-          console.log(err.data.message)
+          console.log(err.data.message);
           toastr.error(err.data.message);
 
         });
       }
-      $scope.doGet = function () {
-          monthlyWorkServ.get(function (response) {
-            console.log(response);
-          }, function (err) {
-            console.log(err.data.message)
-            toastr.error(err.data.message);
+      $scope.doNext = function () {
+        var eId=$scope.data.eId;
+        LeaveServ.get({eId:eId}, function (response) {
+          console.log(response);
+          AuthService.setUser(response);
+           $state.go("leave");
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
 
-          });
+        });
+        
+
         }
-    }
+
+
+        $scope.doGet = function () {
+         var eId=$rootScope.eId;
+          console.log(eId);
+        monthlyWorkServ.get({eId:eId}, function (response) {
+           if(response.data==null)
+          {
+            $scope.data='';
+            toastr.success(response.message);
+          }
+          console.log(response);
+          $scope.data=response;
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+
+        });
+        }
+         $scope.doGet();
+          }
+    
 
 })();

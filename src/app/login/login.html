@@ -1,16 +1,43 @@
-		<div>	<form name="loginForm">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="col-xs-6">
+      <div class="loginbox">
+      <div class="loginlogobox">
+        <img src="assets/images/index.jpeg">
+      </div>
+      <form name="loginForm">
 				  <div class="form-group">
-					<center> <h3>EMS</h3>
-					  UserName:
-				    <input type="text" name="username" class="form-control" placeholder="Email" ng-model="username" required></br>
-					  Password:
-				    <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password" required></br>
+					<label> UserName:</label>
 
-				  <button type="submit" class="btn btn-primary" ng-click="doLogin()" >LOGIN</button>
+            <input type="text" name="username" class="form-control" placeholder="username" ng-model="username" required></br>
+            <label> Password:</label>
 
-            <button type="button" class="btn btn-primary" ui-sref="personel_info" >NEXT</button></center>
+            <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password" required></br>
 
-          </div>
+				  <button type="submit" class="btn btn-primary" ng-click="doLogin()" ng-disabled="loginForm.$invalid">LOGIN</button>
+          </div></div></div>
     </form>
 			</div>
+  </div>
 			</div>
+<div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer>
+</div>

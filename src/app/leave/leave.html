@@ -1,22 +1,56 @@
-<div>	<form name="leaveForm">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#employee">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Links</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#employee">Home</a></li>
+        <li><a href="#personel_info">Employee</a></li>
+        <li><a href="#qualification">Qualification</a></li>
+        <li><a href="#department">Department</a></li>
+        <li><a href="#monthlyWork">MonthlyWork</a></li>
+        <li><a href="#leave">Leave</a></li>
+        <li><a href="#workHistory">WorkHistory</a></li>
+      </ul><br>
+    </div>
+
+
+  <div class="col-sm-6">
+  <form name="leaveForm">
 				<div class="form-group">
-					<h3>Leave Details</h3>
+					<h3><i><b>Leave Details</b></i></h3>
 					<label>Holidays:</label>
-					<input type="textbox" name="holiday" class="form-control" placeholder="holiday" ng-model="holiday" required></br>
+					<input type="textbox" name="holiday" class="form-control" placeholder="holiday" ng-model="data.holiday" required></br>
 						<label>	Leave Days:</label>
-					<input type="textbox" name="days" class="form-control" placeholder="days" ng-model="days" required></br>
+					<input type="textbox" name="days" class="form-control" placeholder="days" ng-model="data.leaveDays" required></br>
 							<label>Leave Month:</label>
-					<input type="textbox" name="lmonth" class="form-control" placeholder="Leave Month" ng-model="lmonth" required></br>
+					<input type="textbox" name="lmonth" class="form-control" placeholder="Leave Month" ng-model="data.leaveMonth" required></br>
+          <label>Leave Type:</label>
+          <input type="textbox" name="ltype" class="form-control" placeholder="Leave type" ng-model="data.leaveType" required></br>
 								<label>Leave Date:</label>
-					<input type="textbox" name="from Date" class="form-control" placeholder="from Date" ng-model="fromDate" required>
-					<input type="textbox" name="to Date" class="form-control" placeholder="to Date" ng-model="toDate" required></br></br>
+					<input type="datetime" name="from Date" class="form-control" placeholder="from Date" ng-model="data.leaveFrom" required>
+					<input type="datetime" name="to Date" class="form-control" placeholder="to Date" ng-model="data.leaveTo" required></br></br>
 				</div>
-				<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
+	<button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
 	<button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
-	<button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
-	<button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
-				<button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
-  <button type="button" class="btn btn-primary" ui-sref="workHistory" >NEXT</button>
+  <button type="button" class="btn btn-primary" ng-click="doNext()" >NEXT</button>
 			</form>
 			</div>
-
+  </div>
+</div>
+<div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer></div>

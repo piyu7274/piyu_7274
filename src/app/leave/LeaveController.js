@@ -10,47 +10,26 @@
         .controller('LeaveController', LeaveController);
 
     /** @ngInject */
-    function LeaveController($scope, LeaveServ, toastr,$rootScope) {
+    function LeaveController($scope, $window,LeaveServ,WorkHistoryServ, AuthService,toastr,$state,$rootScope) {
         //start here
-        $rootScope.title = 'leave'
-        $scope.holiday = '';
-        $scope.leaveDays = '';
-        $scope.leaveMonth = '';
-        $scope.leaveFrom = '';
-        $scope.leaveTo = '';
-        $scope.leave ={
-            holiday: $scope.holiday ,
-            leaveDays:$scope.days,
-            leaveMonth : $scope.lmonth,
-            leaveFrom : $scope.fromDate,
-            leaveTo : $scope.toDate
-    }
-
+        $rootScope.title = 'leave';
+        $scope.data={};
         $scope.doSave = function () {
-          // console.log('in')
-          $scope.leave = {
-            holiday: $scope.holiday,
-            leaveDays: $scope.days,
-            leaveMonth: $scope.lmonth,
-            leaveFrom: $scope.fromDate,
-            leaveTo: $scope.toDate
-          }
-          console.log($scope.leave)
-          LeaveServ.add($scope.leave,
+          LeaveServ.add($scope.data,
             function (response) {
-              console.log(response.data.message);
+              toastr.success(response.message);
             }, function (err) {
-              console.log(err.data.message)
+              console.log(err.data.message);
               toastr.error(err.data.message);
 
             });
         }
       $scope.doUpdate= function () {
-          LeaveServ.update($scope.leave,
+          LeaveServ.update($scope.data,
             function (response) {
               console.log(response.data.message);
             }, function (err) {
-              console.log(err.data.message)
+              console.log(err.data.message);
               toastr.error(err.data.message);
 
             });
@@ -59,20 +38,46 @@
         LeaveServ.delete(function (response) {
           console.log(response);
         }, function (err) {
-          console.log(err.data.message)
+          console.log(err.data.message);
           toastr.error(err.data.message);
 
         });
       }
-      $scope.doGet= function () {
-        LeaveServ.get(function (response) {
+      $scope.doNext = function () {
+        var eId=$scope.data.eId;
+        console.log(eId);
+        WorkHistoryServ.get({eId:eId}, function (response) {
           console.log(response);
+          AuthService.setUser(response)
+          $state.go("workHistory");
         }, function (err) {
-          console.log(err.data.message)
+          console.log(err.data.message);
           toastr.error(err.data.message);
 
         });
+           }
 
-      }}
+        $scope.doGet = function () {
+         var eId=$rootScope.eId;
+          console.log(eId);
+        LeaveServ.get({eId:eId}, function (response) {
+           if(response.data==null)
+          {
+            $scope.data='';
+            toastr.success(response.message);
+          }
+          console.log(response);
+          $scope.data=response;
+        }, function (err) {
+          console.log(err.data.message);
+          toastr.error(err.data.message);
+
+        });
+        }
+         $scope.doGet();
+          }
+
+
+      
 
 })();

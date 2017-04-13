@@ -1,22 +1,53 @@
-<div>	<form name="DepartmentForm">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#employee">Home</a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Links</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#employee">Home</a></li>
+        <li><a href="#personel_info">Employee</a></li>
+        <li><a href="#qualification">Qualification</a></li>
+        <li><a href="#department">Department</a></li>
+        <li><a href="#monthlyWork">MonthlyWork</a></li>
+        <li><a href="#leave">Leave</a></li>
+        <li><a href="#workHistory">WorkHistory</a></li>
+      </ul><br>
+    </div>
+
+
+  <div class="col-sm-6">
+  <form name="DepartmentForm">
 				  <div class="form-group">
-					  <h3>Department Details</h3>
-					  <div><label> Employee Name:</label>
-					  <input type="textbox" name="fFirstName" class="form-control" placeholder="FirstName" ng-model="FirstName" required>
-					  <input type="textbox" name="fLastName" class="form-control" placeholder="LastName" ng-model="LastName" required></br></div>
-					  <div>  <label> Monthly salary:</label>
-				    <input type="textbox" name="monthly salary" class="form-control" placeholder="monthly Salary" ng-model="monthlysalary" required></br></div>
+					  <h3><i><b>Department Details</b></i></h3>
+					  
+					 
 					  <div>  <label>  Department:</label>
-				    <input type="textbox" name="department" class="form-control" placeholder="department" ng-model="department" required></br></div>
+				    <input type="textbox" name="department" class="form-control" placeholder="department" ng-model="data.department" required></br></div>
 					  <div>	  <label> Designation:</label>
-					  <input type="textbox" name="designation" class="form-control" placeholder="designation" ng-model="designation" required></br></br></div>
+					  <input type="textbox" name="designation" class="form-control" placeholder="designation" ng-model="data.designation" required></br></br></div>
 					  </div>
+             <div>  <label> Monthly salary:</label>
+            <input type="textbox" name="monthly salary" class="form-control" placeholder="monthly Salary" ng-model="data.monthlySalary" required></br></div>
 	             <button type="submit" class="btn btn-primary" ng-click="doSave()" >Save</button>
 					     <button type="submit" class="btn btn-primary" ng-click="doUpdate()" >Update</button>
-					   <button type="submit" class="btn btn-primary" ng-click="doDelete()" >Delete</button>
-					   <button type="submit" class="btn btn-primary" ng-click="doGet()" >Get</button>
-					  <button type="clear" class="btn btn-primary" ng-click="doLogin()" >Reset</button>
-  <button type="button" class="btn btn-primary" ui-sref="monthlyWork" >NEXT</button>
+           <button type="button" class="btn btn-primary" ng-click="doNext()">NEXT</button>
 				</form>
 			</div>
-			</div>
+  </div>
+</div>
+<div>
+<footer class="container-fluid">
+  <label> Address:</label><p>409 B-Block, 169, 5th Floor, Corporate House, Rabindranath Tagore Marg, Near Central Mall, South Tukoganj, Chhoti Gwaltoli, Indore, Madhya Pradesh 452001</p>
+  <label> Phone:</label><p>0731 406 3109</p>
+</footer></div>

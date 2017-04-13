@@ -1,10 +1,11 @@
 angular.module('emsdashboard')
   .service('AuthService', function($window, $http) {
 
-    this.user = angular.fromJson({}) ;
+    this.user = angular.fromJson($window.localStorage['EMS.emsdashboard.admin']) || {};
 
     this.setUser = function(user){
       this.user = user;
+      console.log(user);
     }
     this.getUser = function(){
       return this.user;
@@ -17,10 +18,12 @@ angular.module('emsdashboard')
       return false;
     }
     this.persist = function(){
+      window.localStorage['EMS.emsdashboard.admin'] = angular.toJson( this.user)
     }
 
     this.clearUser = function(){
-      this.user  = {};
+       this.user  = {};
+       window.localStorage['EMS.emsdashboard.admin'] = {}
     }
 
   });
